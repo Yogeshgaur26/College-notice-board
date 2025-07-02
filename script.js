@@ -23,6 +23,13 @@ function showDashboard(name) {
   document.getElementById("loginArea").style.display = "none";
   document.querySelector(".notice-form").style.display = "flex";
   document.getElementById("notices").style.display = "block";
+  document.getElementById("logoutBtn").style.display = "block";  // Show logout button
+}
+
+// Logout function
+function logout() {
+  localStorage.removeItem("username");
+  location.reload();
 }
 
 // Load saved user and notices on page load
@@ -34,6 +41,7 @@ window.onload = function () {
   } else {
     document.querySelector(".notice-form").style.display = "none";
     document.getElementById("notices").style.display = "none";
+    document.getElementById("logoutBtn").style.display = "none";
   }
 
   const savedNotices = JSON.parse(localStorage.getItem("notices")) || [];
