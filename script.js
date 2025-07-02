@@ -1,7 +1,7 @@
 const form = document.getElementById("noticeForm");
 const noticesDiv = document.getElementById("notices");
 
-// Login function
+// Login
 function login() {
   const inputUser = document.getElementById("username").value.trim();
   const inputPass = document.getElementById("password").value.trim();
@@ -17,24 +17,22 @@ function login() {
   }
 }
 
-// Show dashboard and notices after login
- // Show logout button
+// Show dashboard after login
 function showDashboard(name) {
   document.getElementById("welcomeMsg").innerText = `Welcome, ${name}!`;
   document.getElementById("loginArea").style.display = "none";
   document.querySelector(".notice-form").style.display = "flex";
   document.getElementById("notices").style.display = "block";
-  document.getElementById("logoutWrapper").style.display = "block"; // <-- added
+  document.getElementById("logoutWrapper").style.display = "block";
 }
 
-
-// Logout function
+// Logout
 function logout() {
   localStorage.removeItem("username");
   location.reload();
 }
 
-// Load saved user and notices on page load
+// Page Load - show saved state
 window.onload = function () {
   const savedUser = localStorage.getItem("username");
 
@@ -43,15 +41,14 @@ window.onload = function () {
   } else {
     document.querySelector(".notice-form").style.display = "none";
     document.getElementById("notices").style.display = "none";
-    document.getElementById("logoutWrapper").style.display = "none"; // Corrected line
+    document.getElementById("logoutWrapper").style.display = "none";
   }
 
   const savedNotices = JSON.parse(localStorage.getItem("notices")) || [];
   savedNotices.forEach((notice, i) => addNoticeToPage(notice, i));
 };
 
-
-// Form submit handler to add notice
+// Submit notice
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -59,21 +56,21 @@ form.addEventListener("submit", function (e) {
   const description = document.getElementById("description").value.trim();
 
   if (!title || !description) {
-    alert("Please fill in both title and description.");
+    alert("Please fill in both fields.");
     return;
   }
 
   const notice = { title, description };
-
   const savedNotices = JSON.parse(localStorage.getItem("notices")) || [];
-  savedNotices.push(notice);
-  localStorage.setItem("notices", JSON.stringify(savedNotices));
 
-  addNoticeToPage(notice, savedNotices.length - 1);
+  savedNotices.unshift(notice);
+  localStorage.setItem("notices", JSON.stringify(savedNotices));
   form.reset();
+  noticesDiv.innerHTML = "";
+  savedNotices.forEach((n, i) => addNoticeToPage(n, i));
 });
 
-// Add a notice to the page
+// Add notice to page
 function addNoticeToPage(notice, index) {
   const div = document.createElement("div");
   div.className = "notice";
@@ -82,24 +79,23 @@ function addNoticeToPage(notice, index) {
     <p>${escapeHtml(notice.description)}</p>
     <button onclick="deleteNotice(${index})" class="delete-btn" title="Delete Notice">Delete</button>
   `;
-  noticesDiv.prepend(div);
+  div.style.opacity = "0";
+  noticesDiv.appendChild(div);
+  setTimeout(() => (div.style.opacity = "1"), 50);
 }
 
-// Delete a notice by index
+// Delete a notice
 function deleteNotice(index) {
   let savedNotices = JSON.parse(localStorage.getItem("notices")) || [];
   savedNotices.splice(index, 1);
   localStorage.setItem("notices", JSON.stringify(savedNotices));
-  location.reload();
+  noticesDiv.innerHTML = "";
+  savedNotices.forEach((n, i) => addNoticeToPage(n, i));
 }
 
-// Simple HTML escaping to avoid injection issues
+// Escape HTML (security)
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
-}
-function logout() {
-  localStorage.removeItem("username");
-  location.reload();
 }
