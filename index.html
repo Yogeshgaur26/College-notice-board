@@ -17,8 +17,7 @@
       <button onclick="login()">Login</button>
     </div>
 
-    <p id="welcomeMsg" style="margin-bottom: 10px;"></p>
-    <button id="logoutBtn" style="display:none; margin-bottom: 20px;" onclick="logout()">Logout</button>
+    <p id="welcomeMsg" style="margin-bottom: 20px;"></p>
 
     <form id="noticeForm" class="notice-form">
       <input type="text" id="title" placeholder="Enter notice title..." required />
@@ -28,6 +27,10 @@
 
     <h2>🗒️ Latest Notices</h2>
     <div id="notices" class="notice-list"></div>
+
+    <div id="logoutWrapper" style="text-align: center; margin-top: 30px; display: none;">
+      <button id="logoutBtn" onclick="logout()">🚪 Logout</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

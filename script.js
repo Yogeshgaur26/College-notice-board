@@ -18,13 +18,15 @@ function login() {
 }
 
 // Show dashboard and notices after login
+ // Show logout button
 function showDashboard(name) {
   document.getElementById("welcomeMsg").innerText = `Welcome, ${name}!`;
   document.getElementById("loginArea").style.display = "none";
   document.querySelector(".notice-form").style.display = "flex";
   document.getElementById("notices").style.display = "block";
-  document.getElementById("logoutBtn").style.display = "block";  // Show logout button
+  document.getElementById("logoutWrapper").style.display = "block"; // <-- added
 }
+
 
 // Logout function
 function logout() {
@@ -41,12 +43,13 @@ window.onload = function () {
   } else {
     document.querySelector(".notice-form").style.display = "none";
     document.getElementById("notices").style.display = "none";
-    document.getElementById("logoutBtn").style.display = "none";
+    document.getElementById("logoutWrapper").style.display = "none"; // Corrected line
   }
 
   const savedNotices = JSON.parse(localStorage.getItem("notices")) || [];
   savedNotices.forEach((notice, i) => addNoticeToPage(notice, i));
 };
+
 
 // Form submit handler to add notice
 form.addEventListener("submit", function (e) {
@@ -95,4 +98,8 @@ function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
+}
+function logout() {
+  localStorage.removeItem("username");
+  location.reload();
 }
