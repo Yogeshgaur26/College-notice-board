@@ -10,16 +10,18 @@
 <body>
   <div class="container">
     <h1>📢 College Notice Board</h1>
-    <div id="loginArea">
-  <input type="text" id="username" placeholder="Enter your name..." />
-  <button onclick="login()">Login</button>
-</div>
-<p id="welcomeMsg" style="margin-bottom: 20px;"></p>
 
+    <div id="loginArea">
+      <input type="text" id="username" placeholder="Username..." />
+      <input type="password" id="password" placeholder="Password..." />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <p id="welcomeMsg" style="margin-bottom: 20px;"></p>
 
     <form id="noticeForm" class="notice-form">
       <input type="text" id="title" placeholder="Enter notice title..." required />
-      <textarea id="description" placeholder="Enter notice description..." required></textarea>
+      <textarea id="description" placeholder="Enter notice description..." rows="4" required></textarea>
       <button type="submit">+ Add Notice</button>
     </form>
 

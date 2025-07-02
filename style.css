@@ -12,32 +12,77 @@ body {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .container {
   max-width: 600px;
   width: 100%;
   background: white;
-  padding: 30px;
+  padding: 30px 40px;
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
   color: #2c3e50;
+  font-weight: 600;
+}
+
+#loginArea {
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loginArea input,
+#loginArea button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+#loginArea input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+#loginArea button {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#loginArea button:hover {
+  background-color: #2980b9;
 }
 
 .notice-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   margin-bottom: 30px;
 }
 
-input, textarea {
+.notice-form input,
+.notice-form textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -46,23 +91,24 @@ input, textarea {
   transition: border-color 0.3s ease;
 }
 
-input:focus, textarea:focus {
+.notice-form input:focus,
+.notice-form textarea:focus {
   border-color: #3498db;
   outline: none;
 }
 
-button {
-  padding: 12px;
+.notice-form button {
+  padding: 14px;
   background-color: #3498db;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-button:hover {
+.notice-form button:hover {
   background-color: #2980b9;
 }
 
@@ -70,6 +116,8 @@ h2 {
   font-size: 22px;
   margin-bottom: 15px;
   color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
 }
 
 .notice-list {
@@ -80,18 +128,71 @@ h2 {
 
 .notice {
   background-color: #ecf0f1;
-  padding: 16px;
+  padding: 18px 20px;
   border-left: 6px solid #3498db;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+  position: relative;
 }
 
 .notice h3 {
-  margin-bottom: 6px;
-  font-size: 18px;
+  margin-bottom: 8px;
+  font-size: 20px;
   color: #2c3e50;
+  font-weight: 600;
 }
 
 .notice p {
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #34495e;
+}
+
+/* Delete button */
+.delete-btn {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 20px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .notice h3 {
+    font-size: 18px;
+  }
+
+  .notice p {
+    font-size: 14px;
+  }
+
+  #loginArea {
+    max-width: 100%;
+    padding: 15px;
+  }
 }
