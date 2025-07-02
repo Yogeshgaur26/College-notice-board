@@ -1,4 +1,5 @@
 # College Notice Board
+(A simple fronted project)
 
 This is a simple web app for managing college notices. Users can log in, add, and delete notices.
 
