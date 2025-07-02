@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Notice Board</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>📢 College Notice Board</h1>
+
+    <form id="noticeForm" class="notice-form">
+      <input type="text" id="title" placeholder="Enter notice title..." required />
+      <textarea id="description" placeholder="Enter notice description..." required></textarea>
+      <button type="submit">+ Add Notice</button>
+    </form>
+
+    <h2>🗒️ Latest Notices</h2>
+    <div id="notices" class="notice-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
